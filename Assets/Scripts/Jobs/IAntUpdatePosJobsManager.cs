@@ -585,6 +585,7 @@ public sealed class IAntUpdateJobsManager
 
     private Transform[] allAntsTransforms;
     private bool needToRegenerateMAccessArray = false;
+    private Transform dummyTransform; // Placeholder for null transforms
 
     private TransformAccessArray m_AccessArray;
 
@@ -608,6 +609,12 @@ public sealed class IAntUpdateJobsManager
         Instance = this;
 
         gridTileUpdater = IGridTileUpdater.Instance;
+
+        // Create a dummy GameObject with a Transform for placeholder purposes
+        GameObject dummyObject = new GameObject("DummyTransformForJobs");
+        dummyObject.SetActive(false); // Keep it inactive to avoid rendering or processing
+        dummyTransform = dummyObject.transform;
+        UnityEngine.Object.DontDestroyOnLoad(dummyObject); // Persist across scene loads if needed
 
         _positionsArray = new SharedArray<Vector2, float2>(allAnts.Length);
         _velocityArray = new SharedArray<Vector2, float2>(allAnts.Length);
@@ -660,6 +667,7 @@ public sealed class IAntUpdateJobsManager
             else
             {
                 _fullForceArrayA[i] = -1;
+                allAntsTransforms[i] = dummyTransform; // Use dummy transform instead of null
             }
         }
 
@@ -671,6 +679,7 @@ public sealed class IAntUpdateJobsManager
     public void RemoveAntFromList(Ant antToRemove)
     {
         _fullForceArrayA[antToRemove.UpdateJobIndex] = -1;
+        allAntsTransforms[antToRemove.UpdateJobIndex] = dummyTransform; // Use dummy transform instead of null
 
         needToRegenerateMAccessArray = true;
     }
@@ -807,6 +816,12 @@ public sealed class IAntUpdateJobsManager
         _steerStrengthArray.Dispose();
         _fullForceArray.Dispose();
         m_AccessArray.Dispose();
+
+        // Clean up the dummy transform GameObject
+        if (dummyTransform != null)
+        {
+            UnityEngine.Object.Destroy(dummyTransform.gameObject);
+        }
     }
 
     public void UpdateAntWanderingStrength(Ant ant)
