@@ -1,17 +1,17 @@
-Personal Use & Contribution License (EULA)
+# Personal Use & Contribution License (EULA)
 
 Physical Blocks
 Copyright © 2025 LM Programming
 
-1. Grant of License
+## Grant of License
 
 You are granted a non-exclusive, non-transferable license to:
 
-Install and play the game.
+- Install and play the game.
+- Record gameplay, stream, and share screenshots or videos.
+- Modify the game solely for personal, private use or for contributing improvements.
 
-Modify the game solely for personal use or for contributing improvements.
-
-2. Prohibited Actions
+## Prohibited Actions
 
 You are NOT allowed to:
 
@@ -21,7 +21,7 @@ Sell, rent, or commercially exploit the game.
 
 Claim ownership or authorship.
 
-3. Modifications & Contributions
+## Modifications & Contributions
 
 You may create modifications for personal use only.
 
@@ -30,15 +30,15 @@ https://github.com/lmProgramming/physical-blocks
 
 Public releases, downloads, or distribution of modifications outside this contribution process are forbidden.
 
-4. Intellectual Property
+## Intellectual Property
 
 All rights to game content, assets, code, and branding remain the sole property of the copyright holder.
 
-5. No Warranty
+## No Warranty
 
 The game is provided “as is,” without warranty. The author is not liable for damages arising from use.
 
-6. Termination
+## Termination
 
 This license terminates automatically if you:
 
