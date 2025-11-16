@@ -45,7 +45,7 @@ public class ListOfSelectableOptionsPanel : MonoBehaviour
         {
             GameObject selectableGameObject = Instantiate(PrefabFromSelectableType(selectableStruct.type), contentHolder);
 
-            SelectableOption selectableOption = selectableGameObject.GetComponent<SelectableOption>();
+            SelectableOption selectableOption = selectableGameObject.GetComponentInChildren<SelectableOption>();
             selectableOption.Setup(selectableStruct);
 
             selectableGameObject.GetComponent<RectTransform>().anchoredPosition = curSelectableCoordinates;
