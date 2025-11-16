@@ -16,7 +16,7 @@ public sealed class AdsManager : MonoBehaviour
 
     // These ad units are configured to always serve test ads.
 #if UNITY_EDITOR
-        private const string _adUnitId = "ca-app-pub-3669837154585361/6290918823";
+        private const string _adUnitId = "ca-app-pub-3940256099942544/5224354917";
 #elif UNITY_ANDROID
         private const string _adUnitId = "ca-app-pub-3669837154585361/6290918823";
 #elif UNITY_IPHONE
@@ -39,6 +39,14 @@ public sealed class AdsManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+        
+        MobileAds.Initialize(initStatus => { });
+
+        var requestConfiguration = new RequestConfiguration();
+
+        MobileAds.SetRequestConfiguration(requestConfiguration);
+
+        LoadAd();
     }
 
     /// <summary>
